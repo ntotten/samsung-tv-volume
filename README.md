@@ -1,4 +1,4 @@
-# samsung-tv-volume
+# Kill Samsung TV Volume Overlay
 
 **Kill the Samsung Smart TV volume OSD** — the oversized banner that covers
 the screen on every volume change — without modifying the TV's firmware,
@@ -141,7 +141,7 @@ persistence risk, and that's the point of the design.
 | `pkgcmd` package disable | Yes (registry flag) | Low — official API, reversible with one command. | **Unsupported on our firmware** — this build's `pkgcmd` has no enable/disable verb (`-d` means "descriptor path"). If your firmware's build has it, it's a promising one-liner. Untested. |
 | Hand-edit the package-registry DB (`sqlite3`) | Yes | **Low-ish, annoying worst case.** Snapshot the DB first and it's a single targeted row change; a botched registry realistically means app-framework weirdness cured by a factory reset, not a brick. But the payoff is unverified — `pkgmgr-info` may cache or rewrite the DB, and nobody's confirmed the disabled flag is honored for a preloaded system app. | Uncertain payoff; we didn't need it. |
 | vconf `banner/volume/show_mode` | (a setting) | Zero risk. | **Dead end, documented to save you the evening:** the binary uses it to pick the external-speaker display *style* (number vs symbol). There is no "off" value. |
-| Modify the system partition (replace the binary, add a boot unit) | Yes | **The only genuinely dangerous route.** The system filesystem is read-only *and* signature-verified; a mistake can mean a non-booting TV and a USB service recovery or worse. And every firmware update reverts it. | Not worth it for a cosmetic fix. Ever. |
+| Modify the system partition (replace the binary, add a boot unit) | Yes | **The only genuinely dangerous route.** The system filesystem is read-only *and* signature-verified; a mistake can mean a non-booting TV and a USB service recovery or worse. And every firmware update reverts it. | Not worth it for a cosmetic fix. |
 
 ## Caveats
 
