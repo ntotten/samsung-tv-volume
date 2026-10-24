@@ -1,0 +1,8 @@
+# Local config and logs
+config.env
+*.log
+.DS_Store
+
+# Third-party tools and Samsung-proprietary artifacts — never commit these
+# (the samsung-tv-root release, Samsung's sdb, the pulled volume-app binary)
+tool/
